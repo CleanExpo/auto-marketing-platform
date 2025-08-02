@@ -1,0 +1,33 @@
+# OpenRouter API Configuration
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+
+# Optional: Specific Model API Keys (if using direct providers)
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Cost Management
+DAILY_BUDGET_LIMIT=50.00
+MONTHLY_BUDGET_LIMIT=1000.00
+
+# Performance Settings
+MAX_CONCURRENT_REQUESTS=5
+CACHE_ENABLED=true
+CACHE_TTL_SECONDS=3600
+
+# CPU Protection
+MAX_CPU_PERCENT=80
+THROTTLE_DELAY=0.5
+
+# Monitoring
+TRACK_USAGE=true
+TRACK_COSTS=true
+EXPORT_METRICS=true
+
+# Security
+SANITIZE_LOGS=true
+PII_DETECTION=true
+
+# Debug Mode
+DEBUG=false
+LOG_LEVEL=INFO
