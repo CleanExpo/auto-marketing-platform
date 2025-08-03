@@ -2,11 +2,26 @@
   "name": "auto-marketing-platform",
   "version": "1.0.0",
   "description": "Unified Platform Automation System for Multi-Platform Marketing",
-  "main": "platform_server.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node platform_server.js",
-    "dev": "nodemon platform_server.js",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "deploy:dev": "npm run build && echo 'Deploying to development...'",
+    "deploy:staging": "npm run test && npm run build && echo 'Deploying to staging...'",
+    "deploy:prod": "npm run test && npm run lint && npm run build && echo 'Deploying to production...'",
+    "rollback": "echo 'Rolling back deployment...'",
+    "mcp:init": "npx @modelcontextprotocol/inspector",
+    "ttd:test": "npm run test -- --testNamePattern",
     "install-deps": "npm install"
   },
   "keywords": [
@@ -20,20 +35,28 @@
   "author": "Auto Marketing Team",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
+    "@magneticwatermelon/mcp-toolkit": "^1.1.4",
+    "@modelcontextprotocol/sdk": "^1.17.1",
+    "@modelcontextprotocol/server-sequential-thinking": "^2025.7.1",
+    "axios": "^1.6.2",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "openai": "^4.20.0",
-    "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.0.1",
     "multer": "^1.4.5-lts.1",
-    "ws": "^8.14.2",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "openai": "^4.104.0",
+    "ws": "^8.14.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2",
+    "@types/express": "^5.0.3",
+    "@types/node": "^20.10.0",
     "jest": "^29.7.0",
-    "@types/node": "^20.10.0"
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=16.0.0"

@@ -1,0 +1,62 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-sequential-thinking"],
+      "env": {},
+      "capabilities": {
+        "tools": true,
+        "prompts": true,
+        "resources": false
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "--allowed-directories", "."],
+      "env": {},
+      "capabilities": {
+        "tools": true,
+        "prompts": false,
+        "resources": true
+      }
+    }
+  },
+  "ttdRd": {
+    "testFramework": "jest",
+    "deploymentEnvironments": {
+      "development": {
+        "autoTest": true,
+        "autoRollback": false,
+        "healthCheckUrl": "http://localhost:3000/health"
+      },
+      "staging": {
+        "autoTest": true,
+        "autoRollback": true,
+        "healthCheckUrl": "http://staging.example.com/health"
+      },
+      "production": {
+        "autoTest": true,
+        "autoRollback": true,
+        "healthCheckUrl": "http://api.example.com/health",
+        "requireApproval": true
+      }
+    },
+    "rapidDeployment": {
+      "maxDeployTime": 300000,
+      "parallelDeploy": false,
+      "rollbackOnFailure": true
+    }
+  },
+  "workflows": {
+    "marketing": {
+      "useSequentialThinking": true,
+      "platforms": ["twitter", "linkedin", "instagram", "facebook", "youtube", "tiktok"],
+      "contentTypes": ["post", "story", "reel", "article", "video"],
+      "optimization": {
+        "autoOptimize": true,
+        "a/bTesting": true,
+        "performanceTracking": true
+      }
+    }
+  }
+}
